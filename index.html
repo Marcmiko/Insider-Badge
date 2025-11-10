@@ -5,41 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Talent Insider — Frame</title>
 
-    <!--
-      INSTRUCTIONS RAPIDES
-      1) Uploade un fichier 1024x1024 nommé insider.png à la racine du projet.
-      2) Si tu changes le nom ou le domaine, mets à jour IMAGE_URL ci-dessous.
-      3) Le bouton 1 pointe vers ton coin TRLTZ sur Zora (ok tel quel).
-      4) Poste l'URL de cette page (https://insider-badge.vercel.app/) dans un cast.
-    -->
-
-    <!-- ===== Open Graph (fallback previews) ===== -->
+    <!-- Open Graph (fallback previews) -->
     <meta property="og:title" content="Talent Insider — Frame" />
     <meta property="og:description" content="Utility only (votes, watchlists, discounts). Educational — not financial advice." />
-    <meta property="og:image" content="https://insider-badge.vercel.app/insider.png" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/Marcmiko/Insider-Badge/ffbd813938eb065a7567f5a9cac2049709f47f45/insider.png" />
     <meta name="description" content="Educational utility. Not financial advice." />
 
-    <!-- ===== Farcaster Frame vNext ===== -->
+    <!-- Farcaster Frame vNext -->
     <meta property="fc:frame" content="vNext" />
-    <!-- Image affichée dans la Frame (doit être publique en HTTPS) -->
-    <meta property="fc:frame:image" content="https://insider-badge.vercel.app/insider.png" />
+    <meta property="fc:frame:image" content="https://raw.githubusercontent.com/Marcmiko/Insider-Badge/ffbd813938eb065a7567f5a9cac2049709f47f45/insider.png" />
 
-    <!-- Bouton 1 : vers le coin TRLTZ (Zora) -->
+    <!-- Buttons -->
     <meta property="fc:frame:button:1" content="Get $TRLTZ" />
     <meta property="fc:frame:button:1:action" content="link" />
     <meta property="fc:frame:button:1:target" content="https://zora.co/coin/base:0xccf3df759820b6b5abdb0f908d4ade441b8d4aa5" />
 
-    <!-- Bouton 2 : Follow -->
     <meta property="fc:frame:button:2" content="Follow @marcmiko" />
     <meta property="fc:frame:button:2:action" content="link" />
     <meta property="fc:frame:button:2:target" content="https://warpcast.com/marcmiko" />
 
-    <!-- Bouton 3 : Scoreboard (pour l’instant vers ton profil) -->
     <meta property="fc:frame:button:3" content="View scoreboard" />
     <meta property="fc:frame:button:3:action" content="link" />
     <meta property="fc:frame:button:3:target" content="https://warpcast.com/marcmiko" />
 
-    <!-- Option: supprime l’avertissement du Preview Tool si un SDK Mini-App est présent -->
+    <!-- (Optionnel) enlève l’alerte du Preview Tool si un SDK Mini-App est présent -->
     <script>
       try {
         const sdk = (window && (window.sdk || window.miniapp || window.baseapp)) || {};
@@ -47,11 +36,11 @@
       } catch (e) {}
     </script>
 
-    <!-- Petit style pour l'affichage "humain" en dehors des clients Frames -->
+    <!-- Fallback style (affichage humain) -->
     <style>
       :root { color-scheme: dark; }
-      body { margin:0; font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; background:#0b0e14; color:#e7ecf3; }
-      .wrap { max-width: 760px; margin: 7vh auto; padding: 24px; }
+      body { margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif; background:#0b0e14; color:#e7ecf3; }
+      .wrap { max-width:760px; margin:7vh auto; padding:24px; }
       .card { background:#101521; border:1px solid #24304a; border-radius:18px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
       h1 { margin:0 0 8px; font-size:28px; }
       p { margin:10px 0 18px; opacity:.92; }
@@ -63,18 +52,18 @@
     </style>
   </head>
   <body>
-    <!-- Fallback "humain" (les clients Frames ignorent ce contenu et lisent les meta ci-dessus) -->
+    <!-- Fallback HTML (les clients Frames lisent surtout les meta ci-dessus) -->
     <div class="wrap">
       <div class="card">
         <h1>Talent Insider (Frame)</h1>
         <p>Utility only (votes, watchlists, mini-app discounts). Educational — not financial advice.</p>
-        <img class="img" src="https://insider-badge.vercel.app/insider.png" alt="Talent Insider" />
+        <img class="img" src="https://raw.githubusercontent.com/Marcmiko/Insider-Badge/ffbd813938eb065a7567f5a9cac2049709f47f45/insider.png" alt="Talent Insider" />
         <div class="actions">
           <a class="btn primary" href="https://zora.co/coin/base:0xccf3df759820b6b5abdb0f908d4ade441b8d4aa5" target="_blank" rel="noopener">Get $TRLTZ</a>
           <a class="btn" href="https://warpcast.com/marcmiko" target="_blank" rel="noopener">Follow @marcmiko</a>
           <a class="btn" href="https://warpcast.com/marcmiko" target="_blank" rel="noopener">View scoreboard</a>
         </div>
-        <p><small>Tip: post this page URL in a Farcaster/Base App cast to render the Frame with buttons inside the feed.</small></p>
+        <p><small>Post this page URL in a Farcaster/Base App cast to render the Frame with buttons inside the feed.</small></p>
       </div>
     </div>
   </body>
