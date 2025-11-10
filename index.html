@@ -3,69 +3,74 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Talent Insider Badge — Frame</title>
+    <title>Talent Insider — Frame</title>
 
-    <!-- ===============
-      Farcaster Frame meta (static, link-action)
-      HOW TO USE:
-      1) Replace CLAIM_LINK with your Zora/thirdweb claim URL (free mint on Base)
-      2) Replace IMAGE_URL with a square 1024×1024 image for preview
-      3) Deploy this index.html to Vercel (static). Paste its URL in a Warpcast/Base App cast.
-      4) Optional: edit @marcmiko in the follow button link.
-    =============== -->
+    <!--
+      INSTRUCTIONS RAPIDES
+      1) Uploade un fichier 1024x1024 nommé insider.png à la racine du projet.
+      2) Si tu changes le nom ou le domaine, mets à jour IMAGE_URL ci-dessous.
+      3) Le bouton 1 pointe vers ton coin TRLTZ sur Zora (ok tel quel).
+      4) Poste l'URL de cette page (https://insider-badge.vercel.app/) dans un cast.
+    -->
 
-    <!-- Open Graph (fallback) -->
-    <meta property="og:title" content="Claim your free Talent Insider badge" />
-    <meta property="og:description" content="Follow @marcmiko, then claim the free badge. Educational content — not financial advice." />
-    <meta property="og:image" content="/Users/marcminkowski/Desktop/Capture d’écran 2025-11-10 à 11.56.24.png" />
+    <!-- ===== Open Graph (fallback previews) ===== -->
+    <meta property="og:title" content="Talent Insider — Frame" />
+    <meta property="og:description" content="Utility only (votes, watchlists, discounts). Educational — not financial advice." />
+    <meta property="og:image" content="https://insider-badge.vercel.app/insider.png" />
+    <meta name="description" content="Educational utility. Not financial advice." />
 
-    <!-- Frame vNext declaration -->
+    <!-- ===== Farcaster Frame vNext ===== -->
     <meta property="fc:frame" content="vNext" />
-    <!-- Primary image inside the frame -->
-    <meta property="fc:frame:image" content="/Users/marcminkowski/Desktop/Capture d’écran 2025-11-10 à 11.56.24.png" />
+    <!-- Image affichée dans la Frame (doit être publique en HTTPS) -->
+    <meta property="fc:frame:image" content="https://insider-badge.vercel.app/insider.png" />
 
-    <!-- Button 1: Claim badge (opens your claim page) -->
-    <meta property="fc:frame:button:1" content="Claim badge (free)" />
+    <!-- Bouton 1 : vers le coin TRLTZ (Zora) -->
+    <meta property="fc:frame:button:1" content="Get $TRLTZ" />
     <meta property="fc:frame:button:1:action" content="link" />
-    <meta property="fc:frame:button:1:target" content="/Users/marcminkowski/Desktop/Capture d’écran 2025-11-10 à 11.56.24.png" />
+    <meta property="fc:frame:button:1:target" content="https://zora.co/coin/base:0xccf3df759820b6b5abdb0f908d4ade441b8d4aa5" />
 
-    <!-- Button 2: Follow account (opens profile) -->
+    <!-- Bouton 2 : Follow -->
     <meta property="fc:frame:button:2" content="Follow @marcmiko" />
     <meta property="fc:frame:button:2:action" content="link" />
     <meta property="fc:frame:button:2:target" content="https://warpcast.com/marcmiko" />
 
-    <!-- Button 3: View scoreboard (optional link to your recap cast or site) -->
+    <!-- Bouton 3 : Scoreboard (pour l’instant vers ton profil) -->
     <meta property="fc:frame:button:3" content="View scoreboard" />
     <meta property="fc:frame:button:3:action" content="link" />
     <meta property="fc:frame:button:3:target" content="https://warpcast.com/marcmiko" />
 
-    <!-- Compliance note (small, just for human visitors) -->
-    <meta name="description" content="Educational utility. Not financial advice." />
+    <!-- Option: supprime l’avertissement du Preview Tool si un SDK Mini-App est présent -->
+    <script>
+      try {
+        const sdk = (window && (window.sdk || window.miniapp || window.baseapp)) || {};
+        if (sdk.actions && typeof sdk.actions.ready === "function") sdk.actions.ready();
+      } catch (e) {}
+    </script>
 
+    <!-- Petit style pour l'affichage "humain" en dehors des clients Frames -->
     <style>
-      /* Human fallback styling when opened in a browser */
       :root { color-scheme: dark; }
-      body { margin:0; font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu; background:#0b0b10; color:#e6e6ea; }
-      .wrap { max-width: 720px; margin: 6vh auto; padding: 24px; }
-      .card { background: #12121a; border: 1px solid #262635; border-radius: 16px; padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
-      h1 { font-size: 28px; margin: 0 0 12px; }
-      p { opacity: .9; }
-      .img { width: 100%; border-radius: 12px; border: 1px solid #2a2a3a; margin: 8px 0 16px; }
-      .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-      a.btn { text-decoration: none; padding: 12px 16px; border-radius: 12px; border: 1px solid #2c2c3a; }
-      a.primary { background: #1b64ff; color: white; border-color: #1b64ff; }
-      small { opacity: .6; }
+      body { margin:0; font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; background:#0b0e14; color:#e7ecf3; }
+      .wrap { max-width: 760px; margin: 7vh auto; padding: 24px; }
+      .card { background:#101521; border:1px solid #24304a; border-radius:18px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+      h1 { margin:0 0 8px; font-size:28px; }
+      p { margin:10px 0 18px; opacity:.92; }
+      .img { width:100%; border-radius:12px; border:1px solid #26324d; margin:8px 0 18px; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; }
+      a.btn { text-decoration:none; padding:12px 16px; border-radius:12px; border:1px solid #2a3756; }
+      a.primary { background:#1b64ff; border-color:#1b64ff; color:#fff; }
+      small { opacity:.6; }
     </style>
   </head>
   <body>
-    <!-- Human fallback content (Frames clients will ignore this and use meta above) -->
+    <!-- Fallback "humain" (les clients Frames ignorent ce contenu et lisent les meta ci-dessus) -->
     <div class="wrap">
       <div class="card">
-        <h1>Talent Insider Badge (free)</h1>
-        <p>Follow <strong>@marcmiko</strong> then claim your free badge. Educational utility — not financial advice.</p>
-        <img class="img" src="/Users/marcminkowski/Desktop/Capture d’écran 2025-11-10 à 11.56.24.png" alt="Talent Insider badge" />
+        <h1>Talent Insider (Frame)</h1>
+        <p>Utility only (votes, watchlists, mini-app discounts). Educational — not financial advice.</p>
+        <img class="img" src="https://insider-badge.vercel.app/insider.png" alt="Talent Insider" />
         <div class="actions">
-          <a class="btn primary" href="CLAIM_LINK" target="_blank" rel="noopener">Claim badge</a>
+          <a class="btn primary" href="https://zora.co/coin/base:0xccf3df759820b6b5abdb0f908d4ade441b8d4aa5" target="_blank" rel="noopener">Get $TRLTZ</a>
           <a class="btn" href="https://warpcast.com/marcmiko" target="_blank" rel="noopener">Follow @marcmiko</a>
           <a class="btn" href="https://warpcast.com/marcmiko" target="_blank" rel="noopener">View scoreboard</a>
         </div>
